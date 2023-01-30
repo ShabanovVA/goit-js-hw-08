@@ -33,8 +33,8 @@ function getLocalStorageData () {
     const data = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
 
     if (data) {
-        email ? data.email.value = data.email : alert('Заповнені не всі поля!!!');
-        message ? data.message.value = data.message : alert('Заповнені не всі поля!!!');
+        data.email.value = data.email;
+        data.message.value = data.message;
     }
 };
 
