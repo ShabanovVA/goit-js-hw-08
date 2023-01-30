@@ -15,7 +15,7 @@ function ontimeUpdateValue(data) {
 function currentTime() {
     const timeUpdate = localStorage.getItem(KEY_LOCALSTORAGE_TIME);
     if (timeUpdate) {
-        player.setCurrentTime(timeUpdate);  
+        player.setCurrentTime(timeUpdate);
     }
 };
 

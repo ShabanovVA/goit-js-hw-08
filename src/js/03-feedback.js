@@ -1,13 +1,13 @@
 import throttle from "lodash.throttle";
 
-const form = document.querySelector('.form');
+const form = document.querySelector('form');
 const email = document.querySelector('.feedback-form input');
 const message = document.querySelector('.feedback-form textarea');
 const LOCALSTORAGE_KEY = 'feedback-form-state';
 const formData = {};
 
 form.addEventListener('input', throttle(onInput, 500));
-form.addEventListener('submit',onFormSubmit);
+form.addEventListener('submit', onFormSubmit);
 
 function onInput(e) {
     const key = e.target.name;
@@ -19,7 +19,13 @@ function onInput(e) {
 function onFormSubmit(e) {
     e.preventDefault();
     console.log(formData);
+
+if (email.value === '' || message.value === '') {
+    return alert('Заповнені не всі поля!!!');
+    };
+
     e.currentTarget.reset();
+
     localStorage.removeItem(LOCALSTORAGE_KEY);
 };
 
