@@ -1,15 +1,22 @@
 import throttle from 'lodash.throttle';
 import Player from '@vimeo/player';
 
-const iframe = document.querySelector('#vimeo-player');
+const iframe = document.querySelector('iframe');
 const player = new Player(iframe);
-
-function timeUpdateValue(event) {
-    localStorage.setItem("videoplayer-current-time", event.seconds)
-};
+const KEY_LOCALSTORAGE_TIME = "videoplayer-current-time";
 
 player.on('timeupdate',
-    throttle(timeUpdateValue, 1000));
+    throttle(ontimeUpdateValue, 1000));
 
-const currentTime = localStorage.getItem("videoplayer-current-time");
-player.setCurrentTime(currentTime);
+function ontimeUpdateValue(data) {
+    localStorage.setItem(KEY_LOCALSTORAGE_TIME, data.seconds)
+};
+
+function currentTime() {
+    const timeUpdate = localStorage.getItem(KEY_LOCALSTORAGE_TIME);
+    if (timeUpdate) {
+        player.setCurrentTime(timeUpdate);  
+    }
+};
+
+currentTime();
