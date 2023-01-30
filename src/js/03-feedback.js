@@ -33,8 +33,8 @@ function getLocalStorageData () {
     const data = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
 
     if (data) {
-        data.email ? data.email.value = data.email : "";
-        data.message ? data.message.value = data.message: "";
+        data.email ? email.value = data.email : "";
+        data.message ? message.value = data.message: "";
     }
 };
 
